@@ -1,45 +1,51 @@
-import javafx.geometry.Side;
+public class Square extends Rectangle{
 
-/**
- * Created by Анатолий on 12.05.2015.
- */
-public class Square extends Rectangle {
-    private double side;
-
-    public Square() {
+    public Square(){
         super();
-        return;
     }
 
     public Square(double side) {
         super(side, side);
     }
 
-    public Square(double side, boolean filled) {
-        super();
-        return;
+    public Square(double side, String color, boolean filled) {
+        super(side, side, color, filled);
     }
 
-    public double getSide() {
-        return side * side;
+    public double getSide(){
+        return super.width;
     }
 
-    public void setSide(double side) {
-        this.side = side;
-        return;
+    public void setSide(double side){
+        setWidth(side);
+        setLength(side);
     }
 
     @Override
-
     public void setWidth(double side) {
-        this.side = side;
+        super.setWidth(side);
+        super.setLength(side);
     }
 
+    @Override
     public void setLength(double side) {
-        this.side = side;
+        super.setWidth(side);
+        super.setLength(side);
     }
 
+    @Override
     public String toString() {
-        return "Square: subclass of " + super.toString() + "side" + side + "side" + side;
+        return "A Square with side="+getSide()
+                + ", which is a subclass of "+super.toString();
+    }
+
+    public double getArea()
+    {
+        return getSide()*getSide();
+    }
+
+    public double getPerimeter()
+    {
+        return getSide()*4;
     }
 }
